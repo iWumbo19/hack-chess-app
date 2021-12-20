@@ -7,16 +7,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ChessLibrary;
 
 namespace ChessBoardGUI
 {
-    public partial class Form1 : Form
+    public partial class GameBoard : Form
     {
-        public Form1()
+        public GameBoard()
         {
             InitializeComponent();
         }
 
+        private void button30_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button64_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
