@@ -7,32 +7,32 @@ using ChessLibrary;
 
 namespace ChessBoardGUI
 {
-    static class CurrentBoard
+    internal static class CurrentBoard
     {
-        static Square[] Squares;
+        internal static Square[] Squares;
 
-        static int Score;
+        internal static int Score;
 
-        static bool BlackCheck;
-        static bool BlackMate;
-        static bool WhiteCheck;
-        static bool WhiteMate;
-        static bool StaleMate;
+        internal static bool BlackCheck;
+        internal static bool BlackMate;
+        internal static bool WhiteCheck;
+        internal static bool WhiteMate;
+        internal static bool StaleMate;
 
-        static byte FiftyMove;
-        static byte RepeatedMove;
+        internal static byte FiftyMove;
+        internal static byte RepeatedMove;
 
-        static bool BlackCastled;
-        static bool WhiteCastled;
+        internal static bool BlackCastled;
+        internal static bool WhiteCastled;
 
-        static bool EndGamePhase;
-        static ChessPieceColor EnPassantColor;  //Color of Player who last moved Pawn two squares
-        static byte EnPassantPosition;          //Square behind Pawn that moved two squares
+        internal static bool EndGamePhase;
+        internal static ChessPieceColor EnPassantColor;  //Color of Player who last moved Pawn two squares
+        internal static byte EnPassantPosition;          //Square behind Pawn that moved two squares
 
-        static ChessPieceColor WhoseMove;
-        static int MoveCount;
+        internal static ChessPieceColor WhoseMove;
+        internal static int MoveCount;
 
-        static void SetupBoard()
+        internal static void SetupBoard()
         {
             //Creates New Array filled with empty Squares
             Squares = new Square[64];

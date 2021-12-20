@@ -12,17 +12,33 @@ namespace ChessBoardGUI
 {
     public partial class GameBoard : Form
     {
+        Dictionary<ChessPieceType, string> BlackPieceImage = new Dictionary<ChessPieceType, string>()
+        {
+            {ChessPieceType.Pawn, @"\Resources\Piece\B_Pawn.png" },
+            {ChessPieceType.Knight, @"\Resources\Piece\B_Knight.png" },
+            {ChessPieceType.Bishop, @"\Resources\Piece\B_Bishop.png" },
+            {ChessPieceType.Queen, @"\Resources\Piece\B_Queen.png" },
+            {ChessPieceType.King, @"\Resources\Piece\B_King.png" },
+            {ChessPieceType.Rook, @"\Resources\Piece\B_Rook.png" }
+        };
         public GameBoard()
         {
             InitializeComponent();
         }
 
-        private void button30_Click(object sender, EventArgs e)
+        private void BeginButton_Click(object sender, EventArgs e)
         {
-
+            CurrentBoard.SetupBoard();
+            ReDrawBoard();
         }
 
-        private void button64_Click(object sender, EventArgs e)
+        private void ReDrawBoard()
+        {
+            if (CurrentBoard.Squares[0].Piece != null) {
+                SquareA8.BackgroundImage = RetrievePieceImage(CurrentBoard.Squares[0].Piece.PieceColor, CurrentBoard.Squares[0].Piece.PieceType)
+        }
+
+        private Bitmap RetrievePieceImage(ChessPieceColor color, ChessPieceType type)
         {
 
         }

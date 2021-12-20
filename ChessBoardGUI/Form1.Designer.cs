@@ -93,6 +93,7 @@ namespace ChessBoardGUI
             this.SquareC2 = new System.Windows.Forms.Button();
             this.SquareB2 = new System.Windows.Forms.Button();
             this.SquareA2 = new System.Windows.Forms.Button();
+            this.BeginButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // SquareA8
@@ -454,7 +455,6 @@ namespace ChessBoardGUI
             this.SquareC6.Size = new System.Drawing.Size(60, 60);
             this.SquareC6.TabIndex = 18;
             this.SquareC6.UseVisualStyleBackColor = false;
-            this.SquareC6.Click += new System.EventHandler(this.button30_Click);
             // 
             // SquareB6
             // 
@@ -863,13 +863,23 @@ namespace ChessBoardGUI
             this.SquareA2.Size = new System.Drawing.Size(60, 60);
             this.SquareA2.TabIndex = 48;
             this.SquareA2.UseVisualStyleBackColor = false;
-            this.SquareA2.Click += new System.EventHandler(this.button64_Click);
+            // 
+            // BeginButton
+            // 
+            this.BeginButton.Location = new System.Drawing.Point(35, 56);
+            this.BeginButton.Name = "BeginButton";
+            this.BeginButton.Size = new System.Drawing.Size(75, 23);
+            this.BeginButton.TabIndex = 64;
+            this.BeginButton.Text = "Start Draw";
+            this.BeginButton.UseVisualStyleBackColor = true;
+            this.BeginButton.Click += new System.EventHandler(this.BeginButton_Click);
             // 
             // GameBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(823, 653);
+            this.Controls.Add(this.BeginButton);
             this.Controls.Add(this.SquareH1);
             this.Controls.Add(this.SquareG1);
             this.Controls.Add(this.SquareF1);
@@ -1006,5 +1016,6 @@ namespace ChessBoardGUI
         private System.Windows.Forms.Button SquareC2;
         private System.Windows.Forms.Button SquareB2;
         private System.Windows.Forms.Button SquareA2;
+        private System.Windows.Forms.Button BeginButton;
     }
 }
