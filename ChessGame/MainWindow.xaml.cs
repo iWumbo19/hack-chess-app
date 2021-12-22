@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Resources;
 using System.Drawing;
+using System.IO;
+using System.Drawing.Imaging;
 
 namespace ChessGame
 {
@@ -43,22 +45,35 @@ namespace ChessGame
             {ChessPieceType.Rook, Properties.Resources.W_Rook }
         };
 
+        
+
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void Draw_Button_Click(object sender, RoutedEventArgs e)
+        private BitmapImage RetrievePieceImage(ChessPieceColor color, ChessPieceType type)
         {
-            SquareA8.Content = FindResource("B_Rook");
-                
-
+            if (color == ChessPieceColor.White) { return ToBitmapImage(WhitePieceImage[type]); }
+            else { return ToBitmapImage(BlackPieceImage[type]); }
         }
 
-        private Bitmap RetrievePieceImage(ChessPieceColor color, ChessPieceType type)
+        private BitmapImage ToBitmapImage(Bitmap bitmap)
         {
-            if (color == ChessPieceColor.White) { return WhitePieceImage[type]; }
-            else { return BlackPieceImage[type]; }
+            using (var memory = new MemoryStream())
+            {
+                bitmap.Save(memory, ImageFormat.Png);
+                memory.Position = 0;
+
+                var bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.StreamSource = memory;
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapImage.EndInit();
+                bitmapImage.Freeze();
+
+                return bitmapImage;
+            }
         }
     }
 }

@@ -29,73 +29,8 @@
         </Style>
         <Image x:Key="B_Rook" Source="Resources/Pieces/B_Rook.png" Height="60" Width="60"/>
     </Window.Resources>
-    <Grid>
-        <Image HorizontalAlignment="Left" Height="474" Margin="138,18,0,0" VerticalAlignment="Top" Width="474" Source="/Resources/Misc/Chess_Board.png"/>
-        <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Left" Height="475" Margin="138,18,0,0" VerticalAlignment="Top" Width="475"/>
-        <Button x:Name="SquareA8" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="139,19,0,0"/>
-        <Button x:Name="SquareB8" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="198,19,0,0"/>
-        <Button x:Name="SquareC8" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="257,19,0,0"/>
-        <Button x:Name="SquareD8" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="316,19,0,0"/>
-        <Button x:Name="SquareE8" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="375,19,0,0"/>
-        <Button x:Name="SquareF8" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="434,19,0,0"/>
-        <Button x:Name="SquareG8" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="493,19,0,0"/>
-        <Button x:Name="SquareH8" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="552,19,0,0"/>
-        <Button x:Name="SquareA7" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="139,78,601,646"/>
-        <Button x:Name="SquareB7" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="198,78,542,646"/>
-        <Button x:Name="SquareC7" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="257,78,483,646"/>
-        <Button x:Name="SquareD7" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="316,78,424,646"/>
-        <Button x:Name="SquareE7" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="375,78,365,646"/>
-        <Button x:Name="SquareF7" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="434,78,306,646"/>
-        <Button x:Name="SquareG7" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="493,78,247,646"/>
-        <Button x:Name="SquareH7" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="552,78,188,646"/>
-        <Button x:Name="SquareA6" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="139,137,601,587"/>
-        <Button x:Name="SquareB6" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="198,137,542,587"/>
-        <Button x:Name="SquareC6" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="257,137,483,587"/>
-        <Button x:Name="SquareD6" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="316,137,424,587"/>
-        <Button x:Name="SquareE6" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="375,137,365,587"/>
-        <Button x:Name="SquareF6" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="434,137,306,587"/>
-        <Button x:Name="SquareG6" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="493,137,247,587"/>
-        <Button x:Name="SquareH6" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="552,137,188,587"/>
-        <Button x:Name="SquareA5" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="139,196,601,528"/>
-        <Button x:Name="SquareB5" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="198,196,542,528"/>
-        <Button x:Name="SquareC5" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="257,196,483,528"/>
-        <Button x:Name="SquareD5" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="316,196,424,528"/>
-        <Button x:Name="SquareE5" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="375,196,365,528"/>
-        <Button x:Name="SquareF5" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="434,196,306,528"/>
-        <Button x:Name="SquareG5" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="493,196,247,528"/>
-        <Button x:Name="SquareH5" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="552,196,188,528"/>
-        <Button x:Name="SquareA4" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="139,255,601,469"/>
-        <Button x:Name="SquareB4" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="198,255,542,469"/>
-        <Button x:Name="SquareC4" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="257,255,483,469"/>
-        <Button x:Name="SquareD4" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="316,255,424,469"/>
-        <Button x:Name="SquareE4" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="375,255,365,469"/>
-        <Button x:Name="SquareF4" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="434,255,306,469"/>
-        <Button x:Name="SquareG4" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="493,255,247,469"/>
-        <Button x:Name="SquareH4" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="552,255,188,469"/>
-        <Button x:Name="SquareA3" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="139,314,601,410"/>
-        <Button x:Name="SquareB3" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="198,314,542,410"/>
-        <Button x:Name="SquareC3" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="257,314,483,410"/>
-        <Button x:Name="SquareD3" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="316,314,424,410"/>
-        <Button x:Name="SquareE3" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="375,314,365,410"/>
-        <Button x:Name="SquareF3" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="434,314,306,410"/>
-        <Button x:Name="SquareG3" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="493,314,247,410"/>
-        <Button x:Name="SquareH3" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="552,314,188,410"/>
-        <Button x:Name="SquareA2" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="139,373,601,351"/>
-        <Button x:Name="SquareB2" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="198,373,542,351"/>
-        <Button x:Name="SquareC2" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="257,373,483,351"/>
-        <Button x:Name="SquareD2" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="316,373,424,351"/>
-        <Button x:Name="SquareE2" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="375,373,365,351"/>
-        <Button x:Name="SquareF2" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="434,373,306,351"/>
-        <Button x:Name="SquareG2" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="493,373,247,351"/>
-        <Button x:Name="SquareH2" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="552,373,188,351"/>
-        <Button x:Name="SquareA1" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="139,432,601,292"/>
-        <Button x:Name="SquareB1" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="198,432,542,292"/>
-        <Button x:Name="SquareC1" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="257,432,483,292"/>
-        <Button x:Name="SquareD1" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="316,432,424,292"/>
-        <Button x:Name="SquareE1" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="375,432,365,292"/>
-        <Button x:Name="SquareF1" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="434,432,306,292"/>
-        <Button x:Name="SquareG1" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="493,432,247,292"/>
-        <Button x:Name="SquareH1" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="552,432,188,292"/>
-        <Button x:Name="Draw_Button" Content="Draw Pieces" HorizontalAlignment="Left" Margin="41,49,0,0" VerticalAlignment="Top" Click="Draw_Button_Click"/>
+    <Grid Height="723" Width="879">
+        <Button x:Name="Draw_Button" Content="Draw Pieces" HorizontalAlignment="Left" Margin="41,49,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="TestLabel" Content="Label" HorizontalAlignment="Left" Margin="247,141,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
