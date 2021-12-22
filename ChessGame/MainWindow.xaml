@@ -27,15 +27,12 @@
             <Setter Property="Button.BorderThickness" Value="0,0,0,0"/>
             <Setter Property="Button.VerticalAlignment" Value="Top"/>
         </Style>
+        <Image x:Key="B_Rook" Source="Resources/Pieces/B_Rook.png" Height="60" Width="60"/>
     </Window.Resources>
     <Grid>
         <Image HorizontalAlignment="Left" Height="474" Margin="138,18,0,0" VerticalAlignment="Top" Width="474" Source="/Resources/Misc/Chess_Board.png"/>
         <Border BorderThickness="1" BorderBrush="Black" HorizontalAlignment="Left" Height="475" Margin="138,18,0,0" VerticalAlignment="Top" Width="475"/>
-        <Button x:Name="SquareA8" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="139,19,0,0">
-            <Button.Background>
-                <ImageBrush ImageSource="/Resources/Pieces/B_Rook.png"/>
-            </Button.Background>
-        </Button>
+        <Button x:Name="SquareA8" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="139,19,0,0"/>
         <Button x:Name="SquareB8" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="198,19,0,0"/>
         <Button x:Name="SquareC8" Style="{DynamicResource ResourceKey=WhiteSquare}" Margin="257,19,0,0"/>
         <Button x:Name="SquareD8" Style="{DynamicResource ResourceKey=BlackSquare}" Margin="316,19,0,0"/>
