@@ -37,7 +37,7 @@ namespace ChessGame
 
         internal bool Moved;
 
-        internal Stack<byte> ValidMoves;
+        internal List<byte> ValidMoves;
 
         internal Piece(Piece piece)
         {
@@ -55,7 +55,7 @@ namespace ChessGame
             PieceType = chessPiece;
             PieceColor = chessPieceColor;
 
-            ValidMoves = new Stack<byte>();
+            ValidMoves = new List<byte>();
             PieceValue = CalculatePieceValue(PieceType);
         }
 

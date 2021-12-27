@@ -7,30 +7,84 @@
         mc:Ignorable="d"
         Title="MainWindow" SizeToContent="WidthAndHeight">
     <Window.Resources>
-        <Style x:Key="WhiteSquare">
-            <Setter Property="Button.Height" Value="60"/>
-            <Setter Property="Button.Width" Value="60"/>
-            <Setter Property="Button.Background" Value="Transparent"/>
-            <Setter Property="Button.Content" Value=""/>
-            <Setter Property="Button.Cursor" Value="Hand"/>
-            <Setter Property="Button.HorizontalAlignment" Value="Left"/>
-            <Setter Property="Button.VerticalAlignment" Value="Top"/>
-            <Setter Property="Button.BorderThickness" Value="0,0,0,0"/>
+        <Style x:Key="BoardSquare">
+            <Setter Property="Image.Height" Value="60"/>
+            <Setter Property="Image.Width" Value="60"/>
+            <Setter Property="Image.Cursor" Value="Hand"/>
+            <Setter Property="Image.HorizontalAlignment" Value="Left"/>
+            <Setter Property="Image.VerticalAlignment" Value="Top"/>
+            <Setter Property="Image.IsEnabled" Value="True"/>
         </Style>
-        <Style x:Key="BlackSquare">
-            <Setter Property="Button.Height" Value="60"/>
-            <Setter Property="Button.Width" Value="60"/>
-            <Setter Property="Button.Background" Value="Transparent"/>
-            <Setter Property="Button.Content" Value=""/>
-            <Setter Property="Button.Cursor" Value="Hand"/>
-            <Setter Property="Button.HorizontalAlignment" Value="Left"/>
-            <Setter Property="Button.BorderThickness" Value="0,0,0,0"/>
-            <Setter Property="Button.VerticalAlignment" Value="Top"/>
-        </Style>
-        <Image x:Key="B_Rook" Source="Resources/Pieces/B_Rook.png" Height="60" Width="60"/>
     </Window.Resources>
     <Grid Height="723" Width="879">
-        <Button x:Name="Draw_Button" Content="Draw Pieces" HorizontalAlignment="Left" Margin="41,49,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="TestLabel" Content="Label" HorizontalAlignment="Left" Margin="247,141,0,0" VerticalAlignment="Top"/>
+        <Image x:Name="BoardBG" HorizontalAlignment="Left" Height="480" Margin="60,60,0,0" VerticalAlignment="Top" Width="480" Source="/Resources/Misc/Green_Board.png"/>
+        <Rectangle HorizontalAlignment="Left" Height="479" Margin="60,60,0,0" Stroke="Black" VerticalAlignment="Top" Width="480"/>
+        <Image x:Name="SquareA8" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="60,60,0,0" Tag="0" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareB8" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="120,60,0,0" Tag="1" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareC8" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="180,60,0,0" Tag="2" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareD8" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="240,60,0,0" Tag="3" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareE8" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="300,60,0,0" Tag="4" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareF8" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="360,60,0,0" Tag="5" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareG8" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="420,60,0,0" Tag="6" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareH8" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="480,60,0,0" Tag="7" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareA7" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="60,120,0,0" Tag="8" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareB7" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="120,120,0,0" Tag="9" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareC7" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="180,120,0,0" Tag="10" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareD7" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="240,120,0,0" Tag="11" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareE7" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="300,120,0,0" Tag="12" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareF7" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="360,120,0,0" Tag="13" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareG7" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="420,120,0,0" Tag="14" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareH7" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="480,120,0,0" Tag="15" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareA6" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="60,180,0,0" Tag="16" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareB6" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="120,180,0,0" Tag="17" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareC6" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="180,180,0,0" Tag="18" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareD6" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="240,180,0,0" Tag="19" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareE6" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="300,180,0,0" Tag="20" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareF6" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="360,180,0,0" Tag="21" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareG6" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="420,180,0,0" Tag="22" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareH6" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="480,180,0,0" Tag="23" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareA5" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="60,240,0,0" Tag="24" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareB5" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="120,240,0,0" Tag="25" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareC5" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="180,240,0,0" Tag="26" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareD5" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="240,240,0,0" Tag="27" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareE5" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="300,240,0,0" Tag="28" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareF5" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="360,240,0,0" Tag="29" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareG5" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="420,240,0,0" Tag="30" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareH5" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="480,240,0,0" Tag="31" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareA4" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="60,300,0,0" Tag="32" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareB4" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="120,300,0,0" Tag="33" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareC4" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="180,300,0,0" Tag="34" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareD4" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="240,300,0,0" Tag="35" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareE4" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="300,300,0,0" Tag="36" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareF4" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="360,300,0,0" Tag="37" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareG4" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="420,300,0,0" Tag="38" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareH4" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="480,300,0,0" Tag="39" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareA3" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="60,360,0,0" Tag="40" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareB3" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="120,360,0,0" Tag="41" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareC3" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="180,360,0,0" Tag="42" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareD3" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="240,360,0,0" Tag="43" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareE3" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="300,360,0,0" Tag="44" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareF3" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="360,360,0,0" Tag="45" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareG3" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="420,360,0,0" Tag="46" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareH3" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="480,360,0,0" Tag="47" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareA2" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="60,420,0,0" Tag="48" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareB2" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="120,420,0,0" Tag="49" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareC2" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="180,420,0,0" Tag="50" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareD2" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="240,420,0,0" Tag="51" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareE2" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="300,420,0,0"  Tag="52" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareF2" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="360,420,0,0" Tag="53" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareG2" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="420,420,0,0" Tag="54" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareH2" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="480,420,0,0" Tag="55" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareA1" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="60,480,0,0" Tag="56" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareB1" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="120,480,0,0" Tag="57" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareC1" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="180,480,0,0" Tag="58" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareD1" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="240,480,0,0" Tag="59" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareE1" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="300,480,0,0" Tag="60" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareF1" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="360,480,0,0" Tag="61" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareG1" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="420,480,0,0" Tag="62" MouseLeftButtonDown="SquareClicked"/>
+        <Image x:Name="SquareH1" Style="{DynamicResource ResourceKey=BoardSquare}" Margin="480,480,0,0" Tag="63" MouseLeftButtonDown="SquareClicked"/>
+        <TextBox x:Name="Status" HorizontalAlignment="Left" Margin="562,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213"/>
+        <Label x:Name="WhoseMoveLabel" Content="To Move:" HorizontalAlignment="Left" Margin="562,93,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="WhoseMoveText" Content="White" HorizontalAlignment="Left" Margin="620,93,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.141,-0.356"/>
     </Grid>
 </Window>

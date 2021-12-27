@@ -83,6 +83,8 @@ namespace ChessGame
             Squares[62].Piece = new Piece(ChessPieceType.Knight, ChessPieceColor.White);
             Squares[63].Piece = new Piece(ChessPieceType.Rook, ChessPieceColor.White);
         }
+
+        
     }
 
     enum BoardtoByte
