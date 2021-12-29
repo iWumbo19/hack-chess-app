@@ -86,5 +86,9 @@
         <TextBox x:Name="Status" HorizontalAlignment="Left" Margin="562,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="213"/>
         <Label x:Name="WhoseMoveLabel" Content="To Move:" HorizontalAlignment="Left" Margin="562,93,0,0" VerticalAlignment="Top"/>
         <Label x:Name="WhoseMoveText" Content="White" HorizontalAlignment="Left" Margin="620,93,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.141,-0.356"/>
+        <Label x:Name="WhiteCheckLabel" Content="White Check:" HorizontalAlignment="Left" Margin="562,154,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="WhiteCheckText" Content="false" HorizontalAlignment="Left" Margin="641,154,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="BlackCheckLabel" Content="Black Check:" HorizontalAlignment="Left" Margin="564,185,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="BlackCheckText" Content="false" HorizontalAlignment="Left" Margin="641,185,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

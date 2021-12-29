@@ -190,14 +190,77 @@ namespace ChessGame
 
         private void InitiateMove()
         {
-            CurrentBoard.Squares[_destSelection].Piece = CurrentBoard.Squares[_sourceSelection].Piece;
-            CurrentBoard.Squares[_sourceSelection].Piece = null;
+            if (!SpecialMove())
+            {
+                CurrentBoard.Squares[_destSelection].Piece = CurrentBoard.Squares[_sourceSelection].Piece;
+                CurrentBoard.Squares[_sourceSelection].Piece = null;                
+            }
+            ReadyBoard();
+        }
+
+        private void ReadyBoard()
+        {
             DrawAll();
             _sourceSelection = 64;
             _destSelection = 64;
             if (CurrentBoard.WhoseMove == ChessPieceColor.White) { CurrentBoard.WhoseMove = ChessPieceColor.Black; }
             else { CurrentBoard.WhoseMove = ChessPieceColor.White; }
             WhoseMoveText.Content = CurrentBoard.WhoseMove;
+            WhiteCheckText.Content = CurrentBoard.WhiteCheck;
+            BlackCheckText.Content = CurrentBoard.BlackCheck;
+        }
+        
+        private bool SpecialMove()
+        {
+            //CASTLEING SPECIAL MOVE
+            if (CurrentBoard.Squares[_sourceSelection].Piece.PieceType == ChessPieceType.King)
+            {
+                //Checks if moving White King
+                if (_sourceSelection == 60)
+                {
+                    //Short Castle
+                    if (_destSelection == 62)
+                    {
+                        CurrentBoard.Squares[_destSelection].Piece = CurrentBoard.Squares[_sourceSelection].Piece;
+                        CurrentBoard.Squares[_sourceSelection].Piece = null;
+                        CurrentBoard.Squares[61].Piece = CurrentBoard.Squares[63].Piece;
+                        CurrentBoard.Squares[63].Piece = null;
+                        return true;
+                    }
+                    //Long Castle
+                    else if (_destSelection == 58)
+                    {
+                        CurrentBoard.Squares[_destSelection].Piece = CurrentBoard.Squares[_sourceSelection].Piece;
+                        CurrentBoard.Squares[_sourceSelection].Piece = null;
+                        CurrentBoard.Squares[59].Piece = CurrentBoard.Squares[56].Piece;
+                        CurrentBoard.Squares[56].Piece = null;
+                        return true;
+                    }
+                }
+                else if (_sourceSelection == 4)
+                {
+                    //Short Castle
+                    if (_destSelection == 6)
+                    {
+                        CurrentBoard.Squares[_destSelection].Piece = CurrentBoard.Squares[_sourceSelection].Piece;
+                        CurrentBoard.Squares[_sourceSelection].Piece = null;
+                        CurrentBoard.Squares[5].Piece = CurrentBoard.Squares[7].Piece;
+                        CurrentBoard.Squares[7].Piece = null;
+                        return true;
+                    }
+                    //Long Castle
+                    else if (_destSelection == 2)
+                    {
+                        CurrentBoard.Squares[_destSelection].Piece = CurrentBoard.Squares[_sourceSelection].Piece;
+                        CurrentBoard.Squares[_sourceSelection].Piece = null;
+                        CurrentBoard.Squares[3].Piece = CurrentBoard.Squares[0].Piece;
+                        CurrentBoard.Squares[0].Piece = null;
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
 
 
