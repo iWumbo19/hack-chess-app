@@ -773,170 +773,67 @@ namespace ChessGame
             return;
         }
 
-        private static void GenerateValidMovesKingCastle(Piece king)
+        private static void AnalyzeMoveKing(byte dstPos, Piece pcMoving)
         {
-            if (king == null)
+            //Can attack any square they can move to
+            if (pcMoving.PieceColor == ChessPieceColor.White)
             {
-                return;
+                WhiteAttackBoard[dstPos] = true;
+            }
+            else //Piece is Black
+            {
+                BlackAttackBoard[dstPos] = true;
             }
 
-
-            if (king.Moved)
+            //If there no piece there I can potentialy take and the 
+            //move doesn't put the king in check, add the piece
+            if (CurrentBoard.Squares[dstPos].Piece == null)
             {
-                return;
+                if (pcMoving.PieceColor == ChessPieceColor.White)
+                {
+                    if (BlackAttackBoard[dstPos] == false)
+                    {
+                        pcMoving.ValidMoves.Add(dstPos);
+                        return;
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+                else //Piece is Black
+                {
+                    if (WhiteAttackBoard[dstPos] == false)
+                    {
+                        pcMoving.ValidMoves.Add(dstPos);
+                        return;
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
             }
-
-            if (king.PieceColor == ChessPieceColor.White &&
-             CurrentBoard.WhiteCastled)
+            else //There is a piece at that destination
             {
-                return;
-            }
-
-            if (king.PieceColor == ChessPieceColor.Black &&
-             CurrentBoard.BlackCastled)
-            {
-                return;
-            }
-
-            if (king.PieceColor == ChessPieceColor.Black &&
-             CurrentBoard.BlackCheck)
-            {
-                return;
-            }
-
-            if (king.PieceColor == ChessPieceColor.White &&
-             CurrentBoard.WhiteCheck)
-            {
-                return;
-            }
-
-
-
-            //This code will add the castleling move to the pieces available moves_
-            if (king.PieceColor == ChessPieceColor.White)
-            {
-                if (CurrentBoard.WhiteCheck)
+                if (CurrentBoard.Squares[dstPos].Piece.PieceType == ChessPieceType.King)
                 {
                     return;
                 }
-
-                if (CurrentBoard.Squares[63].Piece != null)
+                if (CurrentBoard.Squares[dstPos].Piece.PieceColor != pcMoving.PieceColor)
                 {
-                    //Check if the Right Rook is still in the correct position_
-                    if (CurrentBoard.Squares[63].Piece.PieceType == ChessPieceType.Rook)
-                    {
-                        if (CurrentBoard.Squares[63].Piece.PieceColor == king.PieceColor)
-                        {
-                            //Move one column to right see if its empty_
-                            if (CurrentBoard.Squares[62].Piece == null)
-                            {
-                                if (CurrentBoard.Squares[61].Piece == null)
-                                {
-                                    if (BlackAttackBoard[61] == false &&
-                                     BlackAttackBoard[62] == false)
-                                    {
-                                        //Ok looks like move is valid lets add it_
-                                        king.ValidMoves.Add(62);
-                                        WhiteAttackBoard[62] = true;
-                                    }
-                                }
-                            }
-                        }
-                    }
+                    pcMoving.ValidMoves.Add(dstPos);
+                    return;
                 }
-                if (CurrentBoard.Squares[56].Piece != null)
-                {
-                    //Check if the Left Rook is still in the correct position_
-                    if (CurrentBoard.Squares[56].Piece.PieceType == ChessPieceType.Rook)
-                    {
-                        if (CurrentBoard.Squares[56].Piece.PieceColor == king.PieceColor)
-                        {
-                            //Move one column to right see if its empty_
-                            if (CurrentBoard.Squares[57].Piece == null)
-                            {
-                                if (CurrentBoard.Squares[58].Piece == null)
-                                {
-                                    if (CurrentBoard.Squares[59].Piece == null)
-                                    {
-                                        if (BlackAttackBoard[58] == false &&
-                                         BlackAttackBoard[59] == false)
-                                        {
-                                            //Ok looks like move is valid lets add it_
-                                            king.ValidMoves.Add(58);
-                                            WhiteAttackBoard[58] = true;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            else if (king.PieceColor == ChessPieceColor.Black)
-            {
-                if (CurrentBoard.BlackCheck)
+                else //Piece is same color as king being moved
                 {
                     return;
                 }
-                //There are two ways to castle, scenario 1:_ 
-                if (CurrentBoard.Squares[7].Piece != null)
-                {
-                    //Check if the Right Rook is still in the correct position_
-                    if (CurrentBoard.Squares[7].Piece.PieceType == ChessPieceType.Rook
-                     && !CurrentBoard.Squares[7].Piece.Moved)
-                    {
-                        if (CurrentBoard.Squares[7].Piece.PieceColor == king.PieceColor)
-                        {
-                            //Move one column to right see if its empty
-                            if (CurrentBoard.Squares[6].Piece == null)
-                            {
-                                if (CurrentBoard.Squares[5].Piece == null)
-                                {
-                                    if (WhiteAttackBoard[5] == false && WhiteAttackBoard[6] == false)
-                                    {
-                                        //Ok looks like move is valid lets add it_
-                                        king.ValidMoves.Add(6);
-                                        BlackAttackBoard[6] = true;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-                //There are two ways to castle, scenario 2:_
-                if (CurrentBoard.Squares[0].Piece != null)
-                {
-                    //Check if the Left Rook is still in the correct position_
-                    if (CurrentBoard.Squares[0].Piece.PieceType == ChessPieceType.Rook &&
-                     !CurrentBoard.Squares[0].Piece.Moved)
-                    {
-                        if (CurrentBoard.Squares[0].Piece.PieceColor ==
-                         king.PieceColor)
-                        {
-                            //Move one column to right see if its empty_
-                            if (CurrentBoard.Squares[1].Piece == null)
-                            {
-                                if (CurrentBoard.Squares[2].Piece == null)
-                                {
-                                    if (CurrentBoard.Squares[3].Piece == null)
-                                    {
-                                        if (WhiteAttackBoard[2] == false &&
-                                         WhiteAttackBoard[3] == false)
-                                        {
-                                            //Ok looks like move is valid lets add it_
-                                            king.ValidMoves.Add(2);
-                                            BlackAttackBoard[2] = true;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
             }
+
         }
-
-        internal static void GenerateValidMoves()
+                
+        internal static bool GenerateValidMoves()
         {
             // Reset Board
             CurrentBoard.BlackCheck = false;
@@ -1140,25 +1037,219 @@ namespace ChessGame
                             break;
                         }
                 }
-            }
+            }           
 
-
+            //Now that all the pieces were examined we know if the king is in check_
+            
 
             if (CurrentBoard.WhoseMove == ChessPieceColor.White)
             {
-                GenerateValidMovesKingCastle(CurrentBoard.Squares[BlackKingPosition].Piece);
-                GenerateValidMovesKingCastle(CurrentBoard.Squares[WhiteKingPosition].Piece);
+                GenerateValidMovesKing(CurrentBoard.Squares[WhiteKingPosition].Piece);
+                GenerateValidMovesKing(CurrentBoard.Squares[BlackKingPosition].Piece);
             }
             else
             {
-                GenerateValidMovesKingCastle(CurrentBoard.Squares[WhiteKingPosition].Piece);
-                GenerateValidMovesKingCastle(CurrentBoard.Squares[BlackKingPosition].Piece);
+                GenerateValidMovesKing(CurrentBoard.Squares[BlackKingPosition].Piece);
+                GenerateValidMovesKing(CurrentBoard.Squares[WhiteKingPosition].Piece);
             }
 
-            //Now that all the pieces were examined we know if the king is in check_
-            //GenerateValidMovesKingCastle(board, board.Squares[WhiteKingPosition].Piece);
-            //GenerateValidMovesKingCastle(board, board.Squares[BlackKingPosition].Piece);
+            GenerateValidMovesKingCastle(CurrentBoard.Squares[WhiteKingPosition].Piece);
+            GenerateValidMovesKingCastle(CurrentBoard.Squares[BlackKingPosition].Piece);
+
+            if (CurrentBoard.WhoseMove == ChessPieceColor.White)
+            {
+                if (CurrentBoard.WhiteCheck) { return false; }
+                else { return true; }
+            }
+            else
+            {
+                if (CurrentBoard.BlackCheck) { return false; }
+                else { return true; }
+            }
         }
+
+        private static void GenerateValidMovesKingCastle(Piece king)
+        {
+            if (king == null)
+            {
+                return;
+            }
+
+
+            if (king.Moved)
+            {
+                return;
+            }
+
+            if (king.PieceColor == ChessPieceColor.White &&
+             CurrentBoard.WhiteCastled)
+            {
+                return;
+            }
+
+            if (king.PieceColor == ChessPieceColor.Black &&
+             CurrentBoard.BlackCastled)
+            {
+                return;
+            }
+
+            if (king.PieceColor == ChessPieceColor.Black &&
+             CurrentBoard.BlackCheck)
+            {
+                return;
+            }
+
+            if (king.PieceColor == ChessPieceColor.White &&
+             CurrentBoard.WhiteCheck)
+            {
+                return;
+            }
+
+
+
+            //This code will add the castleling move to the pieces available moves_
+            if (king.PieceColor == ChessPieceColor.White)
+            {
+                if (CurrentBoard.WhiteCheck)
+                {
+                    return;
+                }
+
+                if (CurrentBoard.Squares[63].Piece != null)
+                {
+                    //Check if the Right Rook is still in the correct position_
+                    if (CurrentBoard.Squares[63].Piece.PieceType == ChessPieceType.Rook && !CurrentBoard.Squares[63].Piece.Moved)
+                    {
+                        if (CurrentBoard.Squares[63].Piece.PieceColor == king.PieceColor)
+                        {
+                            //Move one column to right see if its empty_
+                            if (CurrentBoard.Squares[62].Piece == null)
+                            {
+                                if (CurrentBoard.Squares[61].Piece == null)
+                                {
+                                    if (BlackAttackBoard[61] == false &&
+                                     BlackAttackBoard[62] == false)
+                                    {
+                                        //Ok looks like move is valid lets add it_
+                                        king.ValidMoves.Add(62);
+                                        WhiteAttackBoard[62] = true;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                if (CurrentBoard.Squares[56].Piece != null)
+                {
+                    //Check if the Left Rook is still in the correct position_
+                    if (CurrentBoard.Squares[56].Piece.PieceType == ChessPieceType.Rook
+                        && !CurrentBoard.Squares[56].Piece.Moved)
+                    {
+                        if (CurrentBoard.Squares[56].Piece.PieceColor == king.PieceColor)
+                        {
+                            //Move one column to right see if its empty_
+                            if (CurrentBoard.Squares[57].Piece == null)
+                            {
+                                if (CurrentBoard.Squares[58].Piece == null)
+                                {
+                                    if (CurrentBoard.Squares[59].Piece == null)
+                                    {
+                                        if (BlackAttackBoard[58] == false &&
+                                         BlackAttackBoard[59] == false)
+                                        {
+                                            //Ok looks like move is valid lets add it_
+                                            king.ValidMoves.Add(58);
+                                            WhiteAttackBoard[58] = true;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            else if (king.PieceColor == ChessPieceColor.Black)
+            {
+                if (CurrentBoard.BlackCheck)
+                {
+                    return;
+                }
+                //There are two ways to castle, scenario 1:_ 
+                if (CurrentBoard.Squares[7].Piece != null)
+                {
+                    //Check if the Right Rook is still in the correct position_
+                    if (CurrentBoard.Squares[7].Piece.PieceType == ChessPieceType.Rook
+                     && !CurrentBoard.Squares[7].Piece.Moved)
+                    {
+                        if (CurrentBoard.Squares[7].Piece.PieceColor == king.PieceColor)
+                        {
+                            //Move one column to right see if its empty
+                            if (CurrentBoard.Squares[6].Piece == null)
+                            {
+                                if (CurrentBoard.Squares[5].Piece == null)
+                                {
+                                    if (WhiteAttackBoard[5] == false && WhiteAttackBoard[6] == false)
+                                    {
+                                        //Ok looks like move is valid lets add it_
+                                        king.ValidMoves.Add(6);
+                                        BlackAttackBoard[6] = true;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                //There are two ways to castle, scenario 2:_
+                if (CurrentBoard.Squares[0].Piece != null)
+                {
+                    //Check if the Left Rook is still in the correct position_
+                    if (CurrentBoard.Squares[0].Piece.PieceType == ChessPieceType.Rook &&
+                     !CurrentBoard.Squares[0].Piece.Moved)
+                    {
+                        if (CurrentBoard.Squares[0].Piece.PieceColor ==
+                         king.PieceColor)
+                        {
+                            //Move one column to right see if its empty_
+                            if (CurrentBoard.Squares[1].Piece == null)
+                            {
+                                if (CurrentBoard.Squares[2].Piece == null)
+                                {
+                                    if (CurrentBoard.Squares[3].Piece == null)
+                                    {
+                                        if (WhiteAttackBoard[2] == false &&
+                                         WhiteAttackBoard[3] == false)
+                                        {
+                                            //Ok looks like move is valid lets add it_
+                                            king.ValidMoves.Add(2);
+                                            BlackAttackBoard[2] = true;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        internal static void GenerateValidMovesKing(Piece pcMoving)
+        { 
+            if (pcMoving.PieceColor == ChessPieceColor.White)
+            {
+                for (byte i = 0; i < MoveArrays.KingTotalMoves[WhiteKingPosition]; i++)
+                {
+                    AnalyzeMoveKing(MoveArrays.KingMoves[WhiteKingPosition].Moves[i], CurrentBoard.Squares[WhiteKingPosition].Piece);
+                }
+            }
+            else //Piece Is Black
+            {
+                for (byte i = 0; i < MoveArrays.KingTotalMoves[BlackKingPosition]; i++)
+                {
+                    AnalyzeMoveKing(MoveArrays.KingMoves[BlackKingPosition].Moves[i], CurrentBoard.Squares[BlackKingPosition].Piece);
+                }
+            }                
+        }
+        
 
     }
 

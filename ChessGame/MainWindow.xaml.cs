@@ -55,6 +55,7 @@ namespace ChessGame
             PieceMoves.InitiateChessPieceMotion();
             CurrentBoard.SetupBoard();
             DrawAll();
+            PieceValidMoves.GenerateValidMoves();
         }
 
         private BitmapImage RetrievePieceImage(ChessPieceColor color, ChessPieceType type)
@@ -162,7 +163,6 @@ namespace ChessGame
             if (CurrentBoard.Squares[(int)BoardtoByte.G1].Piece != null) { SquareG1.Source = RetrievePieceImage(CurrentBoard.Squares[(int)BoardtoByte.G1].Piece.PieceColor, CurrentBoard.Squares[(int)BoardtoByte.G1].Piece.PieceType); } else { SquareG1.Source = ToBitmapImage(Properties.Resources.Empty); }
             if (CurrentBoard.Squares[(int)BoardtoByte.H1].Piece != null) { SquareH1.Source = RetrievePieceImage(CurrentBoard.Squares[(int)BoardtoByte.H1].Piece.PieceColor, CurrentBoard.Squares[(int)BoardtoByte.H1].Piece.PieceType); } else { SquareH1.Source = ToBitmapImage(Properties.Resources.Empty); }
 
-            PieceValidMoves.GenerateValidMoves();
         }
 
         private bool IsValidSource(byte square)
@@ -193,9 +193,10 @@ namespace ChessGame
             if (!SpecialMove())
             {
                 CurrentBoard.Squares[_destSelection].Piece = CurrentBoard.Squares[_sourceSelection].Piece;
-                CurrentBoard.Squares[_sourceSelection].Piece = null;                
+                CurrentBoard.Squares[_sourceSelection].Piece = null;
+                CurrentBoard.Squares[_destSelection].Piece.Moved = true;                
             }
-            ReadyBoard();
+            
         }
 
         private void ReadyBoard()
@@ -208,6 +209,7 @@ namespace ChessGame
             WhoseMoveText.Content = CurrentBoard.WhoseMove;
             WhiteCheckText.Content = CurrentBoard.WhiteCheck;
             BlackCheckText.Content = CurrentBoard.BlackCheck;
+            PieceValidMoves.GenerateValidMoves();
         }
         
         private bool SpecialMove()
@@ -219,46 +221,52 @@ namespace ChessGame
                 if (_sourceSelection == 60)
                 {
                     //Short Castle
-                    if (_destSelection == 62)
+                    if (_destSelection == 62 && !CurrentBoard.Squares[63].Piece.Moved)
                     {
                         CurrentBoard.Squares[_destSelection].Piece = CurrentBoard.Squares[_sourceSelection].Piece;
                         CurrentBoard.Squares[_sourceSelection].Piece = null;
                         CurrentBoard.Squares[61].Piece = CurrentBoard.Squares[63].Piece;
                         CurrentBoard.Squares[63].Piece = null;
+                        CurrentBoard.Squares[_destSelection].Piece.Moved = true;
                         return true;
                     }
                     //Long Castle
-                    else if (_destSelection == 58)
+                    else if (_destSelection == 58 && !CurrentBoard.Squares[56].Piece.Moved)
                     {
                         CurrentBoard.Squares[_destSelection].Piece = CurrentBoard.Squares[_sourceSelection].Piece;
                         CurrentBoard.Squares[_sourceSelection].Piece = null;
                         CurrentBoard.Squares[59].Piece = CurrentBoard.Squares[56].Piece;
                         CurrentBoard.Squares[56].Piece = null;
+                        CurrentBoard.Squares[_destSelection].Piece.Moved = true;
                         return true;
                     }
                 }
                 else if (_sourceSelection == 4)
                 {
                     //Short Castle
-                    if (_destSelection == 6)
+                    if (_destSelection == 6 && !CurrentBoard.Squares[7].Piece.Moved)
                     {
                         CurrentBoard.Squares[_destSelection].Piece = CurrentBoard.Squares[_sourceSelection].Piece;
                         CurrentBoard.Squares[_sourceSelection].Piece = null;
                         CurrentBoard.Squares[5].Piece = CurrentBoard.Squares[7].Piece;
                         CurrentBoard.Squares[7].Piece = null;
+                        CurrentBoard.Squares[_destSelection].Piece.Moved = true;
                         return true;
                     }
                     //Long Castle
-                    else if (_destSelection == 2)
+                    else if (_destSelection == 2 && !CurrentBoard.Squares[0].Piece.Moved)
                     {
                         CurrentBoard.Squares[_destSelection].Piece = CurrentBoard.Squares[_sourceSelection].Piece;
                         CurrentBoard.Squares[_sourceSelection].Piece = null;
                         CurrentBoard.Squares[3].Piece = CurrentBoard.Squares[0].Piece;
                         CurrentBoard.Squares[0].Piece = null;
+                        CurrentBoard.Squares[_destSelection].Piece.Moved = true;
                         return true;
                     }
                 }
             }
+
+            //EN PASSENT IS FORCED!
 
             return false;
         }
@@ -275,6 +283,7 @@ namespace ChessGame
                 {
                     Status.Text = "Destination Selected";
                     InitiateMove();
+                    ReadyBoard();
                 }
                 else { _sourceSelection = 64; _destSelection = 64; Status.Text = "That is not a Legal Move"; }
             }
